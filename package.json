@@ -1,0 +1,16 @@
+{
+  "name": "reachinbox-outbox-monorepo",
+  "version": "1.0.0",
+  "description": "Production-grade Outbox Email Job Scheduler & Dispatcher (ReachInbox Assignment)",
+  "scripts": {
+    "dev:backend": "cd backend && npm run dev",
+    "dev:worker": "cd backend && npm run worker:dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "redis:win": "backend\\bin\\redis-server.exe",
+    "build": "cd backend && npm run build && cd ../frontend && npm run build",
+    "record:demo": "node demo/record-demo.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.65.1"
+  }
+}
