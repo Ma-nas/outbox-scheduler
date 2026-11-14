@@ -108,7 +108,7 @@ export default function SlackModal({ isOpen, onClose, connected, onStatusChange 
               <input
                 type="url"
                 required
-                placeholder="https://hooks.slack.com/services/T.../B.../..."
+                placeholder="https://api.slack.com/webhook/..."
                 value={webhookUrl}
                 onChange={(e) => setWebhookUrl(e.target.value)}
                 className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-[11px]"

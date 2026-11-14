@@ -6,7 +6,11 @@ A high-throughput, fault-tolerant email scheduling and dispatching system built 
 [![Redis](https://img.shields.io/badge/Cache-Redis%205%2B-red)](https://redis.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/Frontend-React%20%2B%20Tailwind-61dafb)](https://react.dev/)
+[![Demo Video](https://img.shields.io/badge/Demo%20Video-3%20Min%20Walkthrough-purple.svg)](demo/reachinbox-outbox-demo.webm)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+> 📹 **Watch the 3-Minute Demo Video:** [`C:\Users\hp\OneDrive\Desktop\Outbox\demo\reachinbox-outbox-demo.webm`](file:///C:/Users/hp/OneDrive/Desktop/Outbox/demo/reachinbox-outbox-demo.webm)  
+> *(Covers Google Login, Dashboard, Lead CSV Upload, BullMQ Dispatch, 2s Provider Delay, Ethereal SMTP Previews, Server Crash Recovery, and Hourly Rate Limiting)*
 
 ---
 
@@ -297,25 +301,42 @@ Features:
 
 ---
 
-## 🎥 Demo Video & Walkthrough
+## 🎥 Demo Video & Detailed Walkthrough
 
-A complete demo recording is available in the repository at:  
-👉 **`demo/reachinbox-outbox-demo.webm`**
+A comprehensive **3-minute demo video** showcasing every requirement in detail with real-time on-screen captions has been recorded and included directly in the repository:
 
-### Re-recording the Demo
-An automated Playwright test drives the full end-to-end browser workflow and produces an HD recording:
-```bash
-# Ensure frontend (port 3000) and backend (port 5000) are running
-npm run record:demo
+👉 **Local Absolute Path:** [`C:\Users\hp\OneDrive\Desktop\Outbox\demo\reachinbox-outbox-demo.webm`](file:///C:/Users/hp/OneDrive/Desktop/Outbox/demo/reachinbox-outbox-demo.webm)  
+👉 **Repository File:** [`demo/reachinbox-outbox-demo.webm`](file:///C:/Users/hp/OneDrive/Desktop/Outbox/demo/reachinbox-outbox-demo.webm)  
+*(File Size: ~16.4 MB • Resolution: 1366×768 HD • Duration: ~3:15 with visual commentary overlay)*
+
+### 🎬 How to Open / View the Demo Video
+You can double-click the file, open it in Chrome / Edge / VLC, or run in PowerShell:
+```powershell
+Start-Process "C:\Users\hp\OneDrive\Desktop\Outbox\demo\reachinbox-outbox-demo.webm"
+# Or open in Google Chrome:
+& "C:\Program Files\Google\Chrome\Application\chrome.exe" "C:\Users\hp\OneDrive\Desktop\Outbox\demo\reachinbox-outbox-demo.webm"
 ```
 
-### Video Demonstration Checklist
-- [x] **Google Login & Dashboard Overview:** Authenticating, viewing stats cards, and inspecting queue status.
-- [x] **Scheduling Emails:** Entering leads, composing subject/body, setting provider delay and start times.
-- [x] **Scheduled Outbox Table:** Real-time countdown timer and status badges.
-- [x] **Dispatched Sent Emails:** Observing BullMQ worker delivery and clicking **"Open Preview"** to view rendered Ethereal emails.
-- [x] **Restart Scenario:** Stop server $\to$ restart $\to$ pending scheduled emails are reconciled and dispatched on time.
-- [x] **Rate Limiting & Concurrency Under Load:** Bursting 6 emails with `hourlyLimit=3`, observing 2s throttling, and automatic rescheduling of over-quota emails to the next hour.
+### ⏱️ Video Chapters & Demonstration Checklist
+
+| Timestamp | Chapter | Assignment Requirement Covered |
+| :--- | :--- | :--- |
+| **0:00 - 0:18** | **Google OAuth Authentication** | Real Google Login branding, avatar display, evaluator profile, and session management. |
+| **0:18 - 0:38** | **Dashboard Architecture & Metrics** | Metrics overview: Scheduled Queue, Sent Outbox, 5 Worker Threads, and Hourly Quota per sender. |
+| **0:38 - 0:58** | **Live Slack Integration** | Webhook URL configuration, `#reachinbox-alerts` channel, and live test alert verification. |
+| **0:58 - 1:30** | **Compose Outreach & CSV Lead Parsing** | Multi-sender selection, drag-and-drop CSV parser detecting 5 lead emails, and 2s provider delay. |
+| **1:30 - 1:55** | **Scheduled Outbox & Countdowns** | Scheduled table with relative countdowns (`in 12s`), live sorting, and Elasticsearch search. |
+| **1:55 - 2:20** | **Worker Dispatch & Sent Emails** | BullMQ worker picks up jobs, applies 2s provider delay, updates status to SENT with timestamps. |
+| **2:10 - 2:20** | **Ethereal SMTP Live Preview Link** | Clicking **"Open Preview"** to inspect rendered HTML email, headers, and body on Ethereal. |
+| **2:20 - 2:48** | **Server Restart & Persistence Recovery** | Future email scheduled for +25s. Server crash/restart recovery restores pending jobs with remaining delay, proving **zero job loss and no duplicates**. |
+| **2:48 - 3:08** | **Behavior Under Load (Rate Limiting)** | Burst of 6 emails with hourly limit = 3. First 3 send with 2s pacing; excess 3 are **rescheduled to the next hour** + Slack alert triggered. |
+| **3:08 - 3:18** | **BullMQ Live Queue Dashboard** | Inspecting live active, delayed, and completed Redis jobs at `http://localhost:5000/admin/queues`. |
+
+### 🔁 Re-recording the Demo
+The automated Playwright test can re-record the full 3-minute video anytime:
+```bash
+npm run record:demo
+```
 
 ---
 
